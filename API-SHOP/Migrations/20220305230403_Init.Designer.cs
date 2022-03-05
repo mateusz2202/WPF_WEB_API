@@ -4,16 +4,18 @@ using API_SHOP.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace API_SHOP.Migrations
 {
-    [DbContext(typeof(ShopContext))]
-    partial class ShopContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ShopDbContext))]
+    [Migration("20220305230403_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,14 +64,14 @@ namespace API_SHOP.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WareHouseId")
+                    b.Property<int>("WarehouseId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("WareHouseId");
+                    b.HasIndex("WarehouseId");
 
                     b.ToTable("InfoProducts");
                 });
@@ -99,6 +101,29 @@ namespace API_SHOP.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsAvailable = true,
+                            Name = "T-shirt",
+                            Price = 10m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsAvailable = true,
+                            Name = "Trousers",
+                            Price = 55m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsAvailable = true,
+                            Name = "Blouse",
+                            Price = 35m
+                        });
                 });
 
             modelBuilder.Entity("API_SHOP.Entities.Role", b =>
@@ -117,6 +142,18 @@ namespace API_SHOP.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Customer"
+                        });
                 });
 
             modelBuilder.Entity("API_SHOP.Entities.ShoppingBasket", b =>
@@ -181,9 +218,41 @@ namespace API_SHOP.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsAvailable = true,
+                            LastName = "Admin",
+                            Login = "Admin",
+                            Name = "Admin",
+                            Password = "1234",
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsAvailable = true,
+                            LastName = "Smith",
+                            Login = "johns@example.com",
+                            Name = "John",
+                            Password = "1234",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsAvailable = true,
+                            LastName = "Tank",
+                            Login = "petero@example.com",
+                            Name = "Peter",
+                            Password = "1234",
+                            RoleId = 2
+                        });
                 });
 
-            modelBuilder.Entity("API_SHOP.Entities.WareHouse", b =>
+            modelBuilder.Entity("API_SHOP.Entities.Warehouse", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -201,7 +270,27 @@ namespace API_SHOP.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WareHouses");
+                    b.ToTable("Warehouses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsAvailable = true,
+                            Name = "Rzeszow"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsAvailable = true,
+                            Name = "Krakow"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsAvailable = true,
+                            Name = "Gdańsk"
+                        });
                 });
 
             modelBuilder.Entity("API_SHOP.Entities.InfoBoughtProduct", b =>
@@ -231,13 +320,15 @@ namespace API_SHOP.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API_SHOP.Entities.WareHouse", "WareHouse")
+                    b.HasOne("API_SHOP.Entities.Warehouse", "Warehouse")
                         .WithMany("InfoProducts")
-                        .HasForeignKey("WareHouseId");
+                        .HasForeignKey("WarehouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
 
-                    b.Navigation("WareHouse");
+                    b.Navigation("Warehouse");
                 });
 
             modelBuilder.Entity("API_SHOP.Entities.ShoppingBasket", b =>
@@ -272,7 +363,7 @@ namespace API_SHOP.Migrations
                     b.Navigation("InfoBoughtProducts");
                 });
 
-            modelBuilder.Entity("API_SHOP.Entities.WareHouse", b =>
+            modelBuilder.Entity("API_SHOP.Entities.Warehouse", b =>
                 {
                     b.Navigation("InfoProducts");
                 });

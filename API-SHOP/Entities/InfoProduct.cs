@@ -10,7 +10,8 @@ namespace API_SHOP.Entities
         public Product? Product { get; set; } = null;
         [Required]
         public int Count { get; set; } = 0;
-        public int? WareHouseId { get; set; } = null;
-        public WareHouse? WareHouse { get; set; } = null;
+        [Required]
+        public int WarehouseId { get; set; }
+        public Warehouse? Warehouse { get; set; } = null;
     }
 }

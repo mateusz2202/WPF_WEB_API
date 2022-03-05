@@ -3,14 +3,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API_SHOP.Data
 {
-    public class ShopContext : DbContext
+    public class ShopDbContext : DbContext
     {
-        public ShopContext(DbContextOptions options) : base(options)
+        public ShopDbContext(DbContextOptions options) : base(options)
         {
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            new ShopDBInitializer(modelBuilder).Seed();
         }
 
         public DbSet<Product>? Products { get; set; }
-        public DbSet<WareHouse>? WareHouses { get; set; }
+        public DbSet<Warehouse>? Warehouses { get; set; }
         public DbSet<InfoProduct>? InfoProducts { get; set; }
         public DbSet<Role>? Roles { get; set; }
         public DbSet<User>? Users { get; set; }

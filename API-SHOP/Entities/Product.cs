@@ -1,12 +1,17 @@
-﻿namespace API_SHOP.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API_SHOP.Entities
 {
     public class Product
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int? Description { get; set; }
+        [Required]
+        [MaxLength(500)]
+        public string? Name { get; set; } = null;
+        public int? Description { get; set; } = null;
+        [Required]
         public decimal Price { get; set; }
-        bool IsAvailable { get; set; }
-        public List<InfoProduct> InfoProducts { get; set; }
+        public bool IsAvailable { get; set; } = true;
+        public List<InfoProduct>? InfoProducts { get; set; } = null;
     }
 }

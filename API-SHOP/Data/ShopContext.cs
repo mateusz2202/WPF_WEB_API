@@ -9,12 +9,12 @@ namespace API_SHOP.Data
         {
         }
 
-        public DbSet<Product> Products { get; set; }
-        public DbSet<WareHouse> WareHouses { get; set; }
-        public DbSet<InfoProduct> InfoProducts { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<ShoppingBasket> ShoppingBaskets { get; set; }
-        public DbSet<InfoBoughtProduct> InfoBoughtProducts { get; set; }
+        public DbSet<Product>? Products { get; set; }
+        public DbSet<WareHouse>? WareHouses { get; set; }
+        public DbSet<InfoProduct>? InfoProducts { get; set; }
+        public DbSet<Role>? Roles { get; set; }
+        public DbSet<User>? Users { get; set; }
+        public DbSet<ShoppingBasket>? ShoppingBaskets { get; set; }
+        public DbSet<InfoBoughtProduct>? InfoBoughtProducts { get; set; }
     }
 }

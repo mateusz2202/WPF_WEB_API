@@ -2,7 +2,7 @@
 
 namespace API_SHOP.IServices
 {
-    public interface IProduct
+    public interface IProductService
     {
         List<Product>GetAll();
         Product GetById(int id);

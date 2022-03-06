@@ -49,7 +49,7 @@ namespace WPF_SHOP.ViewAdmin
         }
         private async void Refresh()
         {
-            var products=await "https://localhost:7221/api/Product".GetAsync().ReceiveJson<List<Product>>();
+            var products=await "https://localhost:7221/api/Product/info".GetAsync().ReceiveJson<List<Product>>();
             DG_Products.ItemsSource = products;
         }
     }

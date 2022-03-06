@@ -27,7 +27,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <StackPanel VerticalAlignment="Top" 
-                    HorizontalAlignment="Center">
+                    HorizontalAlignment="Right"
+                                Margin="0,0,10,0">
                         <Label Foreground="White" 
                    FontSize="16">Name:</Label>
                         <TextBox x:Name="TB_Name"
@@ -49,7 +50,8 @@
                     <StackPanel 
                         Grid.Column="1"
                         VerticalAlignment="Top" 
-                    HorizontalAlignment="Center">
+                    HorizontalAlignment="Left"
+                        Margin="10,0,0,0">
                         <Label Foreground="White" 
                    FontSize="16">Count:</Label>
                         <TextBox x:Name="TB_Count"
@@ -91,7 +93,7 @@
                         <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding Name}"/>
                         <DataGridTextColumn Header="Description" Width="100" Binding="{Binding Description}"/>
                         <DataGridTextColumn Header="Price" Width="100" Binding="{Binding Price}"/>
-                        <DataGridTextColumn Header="IsAvaialibty" Width="100" Binding="{Binding IsAvaialibty}"/>
+                        <DataGridCheckBoxColumn Header="IsAvaialibty" Width="70" Binding="{Binding IsAvailable}"/>
                         <DataGridTextColumn Header="Count" Width="100" Binding="{Binding Count}"/>
                         <DataGridTextColumn Header="Warehouse" Width="100" Binding="{Binding Warehouse}"/>
                         <DataGridTemplateColumn Header="Edit" Width="100">

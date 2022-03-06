@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_SHOP.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    [Migration("20220305230403_Init")]
+    [Migration("20220306010606_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -344,13 +344,13 @@ namespace API_SHOP.Migrations
 
             modelBuilder.Entity("API_SHOP.Entities.User", b =>
                 {
-                    b.HasOne("API_SHOP.Entities.Role", "Rola")
+                    b.HasOne("API_SHOP.Entities.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Rola");
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("API_SHOP.Entities.Product", b =>

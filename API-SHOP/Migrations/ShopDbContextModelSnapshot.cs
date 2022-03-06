@@ -342,13 +342,13 @@ namespace API_SHOP.Migrations
 
             modelBuilder.Entity("API_SHOP.Entities.User", b =>
                 {
-                    b.HasOne("API_SHOP.Entities.Role", "Rola")
+                    b.HasOne("API_SHOP.Entities.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Rola");
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("API_SHOP.Entities.Product", b =>

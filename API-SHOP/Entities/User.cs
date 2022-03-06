@@ -19,7 +19,7 @@ namespace API_SHOP.Entities
         [MaxLength(32)]
         public string ?Password { get; set; }
         public int RoleId { get; set; }
-        public Role? Rola { get; set; }=null;
+        public Role? Role { get; set; }=null;
         public bool IsAvailable { get; set; } = true;
     }
 }

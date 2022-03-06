@@ -9,7 +9,7 @@ namespace API_SHOP.Entities
         [Required]
         [MaxLength(500)]
         public string? Name { get; set; } = null;
-        public int? Description { get; set; } = null;
+        public string? Description { get; set; } = null;
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }

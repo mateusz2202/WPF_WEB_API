@@ -27,12 +27,12 @@ namespace API_SHOP.Data
                 new Warehouse()
                 {
                     Id= 1,
-                    Name="Rzeszow"
+                    Name="Rzeszów"
                 },
                 new Warehouse()
                 {
                     Id=2,
-                    Name="Krakow"
+                    Name="Kraków"
                 },
                 new Warehouse()
                 {

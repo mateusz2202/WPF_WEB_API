@@ -16,7 +16,7 @@ namespace API_SHOP.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Description = table.Column<int>(type: "int", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsAvailable = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -175,8 +175,8 @@ namespace API_SHOP.Migrations
                 columns: new[] { "Id", "IsAvailable", "Name" },
                 values: new object[,]
                 {
-                    { 1, true, "Rzeszow" },
-                    { 2, true, "Krakow" },
+                    { 1, true, "Rzeszów" },
+                    { 2, true, "Kraków" },
                     { 3, true, "Gdańsk" }
                 });
 

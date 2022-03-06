@@ -82,8 +82,8 @@ namespace API_SHOP.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("Description")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
@@ -274,13 +274,13 @@ namespace API_SHOP.Migrations
                         {
                             Id = 1,
                             IsAvailable = true,
-                            Name = "Rzeszow"
+                            Name = "Rzeszów"
                         },
                         new
                         {
                             Id = 2,
                             IsAvailable = true,
-                            Name = "Krakow"
+                            Name = "Kraków"
                         },
                         new
                         {

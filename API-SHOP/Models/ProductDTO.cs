@@ -2,9 +2,9 @@
 {
     public class ProductDTO
     {        
-        public string? Name { get; set; } = null;
-        public int? Description { get; set; } = null;   
+        public string? Name { get; set; } 
+        public int? Description { get; set; }
         public decimal Price { get; set; }
-        public bool IsAvailable { get; set; } = true;     
+        public bool IsAvailable { get; set; }
     }
 }

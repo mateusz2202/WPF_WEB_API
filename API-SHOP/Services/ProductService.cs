@@ -1,5 +1,6 @@
 ﻿using API_SHOP.Data;
 using API_SHOP.Entities;
+using API_SHOP.Exceptions;
 using API_SHOP.IServices;
 using API_SHOP.Models;
 using AutoMapper;
@@ -19,27 +20,43 @@ namespace API_SHOP.Services
 
         public void CreateProduct(ProductDTO dto)
         {
-            throw new NotImplementedException();
+           var product=_mapper.Map<Product>(dto);
+            _dbContext.Products?.Add(product);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            var product= _dbContext.Products?.FirstOrDefault(x => x.Id == id);
+            if (product is null) throw new NotFoundException("Product not found");
+            _dbContext.Products?.Remove(product);
+            _dbContext.SaveChanges();
         }
 
-        public List<Product> GetAll()
+        public List<ProductDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var products = _dbContext.Products?.ToList();
+            var productsDto=_mapper.Map<List<ProductDTO>>(products);
+            return productsDto;
         }
 
-        public Product GetById(int id)
+        public ProductDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            var product=_dbContext.Products?.FirstOrDefault(x=>x.Id == id);
+            if (product is null) throw new NotFoundException("Product not found");
+            var result=_mapper.Map<ProductDTO>(product);
+            return result;
         }
 
         public void UpdateProduct(int id, ProductDTO dto)
         {
-            throw new NotImplementedException();
+            var product = _dbContext.Products?.FirstOrDefault(x => x.Id == id);
+            if (product is null) throw new NotFoundException("Product not found");
+            product.Name = dto.Name;
+            product.Description = dto.Description;
+            product.Price = dto.Price;
+            product.IsAvailable = dto.IsAvailable;
+            _dbContext.SaveChanges();
         }
     }
 }

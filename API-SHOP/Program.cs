@@ -19,12 +19,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddFluentValidation();
 builder.Services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Shop_DB_Connection")));
-
-//register middleware
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //register services used database
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 //regisster valid
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

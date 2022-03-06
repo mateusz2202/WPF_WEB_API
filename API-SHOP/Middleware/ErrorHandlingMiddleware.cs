@@ -10,6 +10,11 @@ namespace API_SHOP.Middleware
             {
                 await next.Invoke(context);
             }
+            catch (NotFoundException ex)
+            {
+                context.Response.StatusCode = 404;
+                await context.Response.WriteAsync(ex.Message);
+            }
             catch (BadRequestException ex)
             {
                 context.Response.StatusCode = 400;

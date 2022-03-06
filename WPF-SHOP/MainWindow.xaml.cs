@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF_SHOP.Models;
 using WPF_SHOP.ViewAdmin;
+using WPF_SHOP.ViewUser;
 
 namespace WPF_SHOP
 {
@@ -41,8 +42,27 @@ namespace WPF_SHOP
                 if (loginResult.StatusCode == 200)
                 {
                     var token = await loginResult.ResponseMessage.Content.ReadAsStringAsync();
-                    
-                    MessageBox.Show(token);
+                    var userdto = await $"https://localhost:7221/api/Account/user/{user.Login}".GetAsync().ReceiveJson<User>();
+                    if (userdto.RoleId == 1)
+                    {
+                        IndexAdmin z = new IndexAdmin(token)
+                        {
+                            WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                            WindowState = WindowState.Maximized
+                        };
+                        z.Show();
+                        Close();
+                    }
+                    if(userdto.RoleId == 2)
+                    {
+                        IndexUser z = new IndexUser(token)
+                        {
+                            WindowStartupLocation= WindowStartupLocation.CenterOwner,
+                            WindowState= WindowState.Maximized
+                        };
+                        z.Show();
+                        Close();
+                    }
                 }
                 else
                 {
@@ -53,16 +73,8 @@ namespace WPF_SHOP
             {
 
                 MessageBox.Show("Error connection");
-            }
-            
-            
-            IndexAdmin z = new IndexAdmin
-            {
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                WindowState = WindowState.Maximized
-            };
-            z.Show();           
-            this.Close();
+            }         
+     
         }
 
         private void BT_CLick_SignUp(object sender, RoutedEventArgs e)

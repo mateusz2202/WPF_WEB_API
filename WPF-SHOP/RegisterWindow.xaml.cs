@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flurl.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_SHOP.Models;
 
 namespace WPF_SHOP
 {
@@ -31,11 +33,37 @@ namespace WPF_SHOP
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
             };
             z.Show();
-            this.Close();
+            Close();
         }
 
-        private void BT_CLick_SignUp(object sender, RoutedEventArgs e)
+        private async void BT_CLick_SignUp(object sender, RoutedEventArgs e)
         {
+            var userDto = new UserRegister()
+            {
+                UserName=TB_Name.Text,
+                LastName=TB_LastName.Text,
+                Email=TB_Email.Text,
+                Password=PB_Password.Password,
+                ConfirmPassword=PB_ConfirmPassword.Password,
+                RoleId=2
+            };
+            try
+            {
+                var result=await "https://localhost:7221/api/Account/register".AllowAnyHttpStatus().PostJsonAsync(userDto);
+                if (result.StatusCode == 200)
+                {
+                    MessageBox.Show("Account registered");
+                }
+                else
+                {
+                    MessageBox.Show("Sorry :( something went wrong");
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error connection");
+            }
 
         }
     }

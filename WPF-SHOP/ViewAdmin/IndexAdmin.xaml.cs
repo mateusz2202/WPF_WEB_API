@@ -19,9 +19,11 @@ namespace WPF_SHOP.ViewAdmin
     /// </summary>
     public partial class IndexAdmin : Window
     {
-        public IndexAdmin()
+        private readonly string _token;
+        public IndexAdmin(string token)
         {
             InitializeComponent();
+            _token = token;
         }
 
         private void BT_Click_LogOut(object sender, RoutedEventArgs e)

@@ -19,9 +19,11 @@ namespace WPF_SHOP.ViewUser
     /// </summary>
     public partial class IndexUser : Window
     {
-        public IndexUser()
+        private readonly string _token;
+        public IndexUser(string token)
         {
             InitializeComponent();
+            _token = token;
         }
 
         private void BT_Click_LogOut(object sender, RoutedEventArgs e)

@@ -50,5 +50,11 @@ namespace API_SHOP.Controllers
             var result=_productService.GetAllProductInfo();
             return Ok(result);
         }
+        [HttpPost("info")]
+        public ActionResult CreateProductInfo([FromBody] ProductInfoDTO dto)
+        {
+            _productService.CreateProductInfo(dto);
+            return Ok();
+        }
     }
 }

@@ -26,6 +26,29 @@ namespace API_SHOP.Services
             _dbContext.SaveChanges();
         }
 
+        public void CreateProductInfo(ProductInfoDTO dto)
+        {
+            var product = new Product()
+            {
+                Name = dto.Name,
+                Description = dto.Description,
+                Price = dto.Price,
+                IsAvailable = dto.IsAvailable,
+            };
+            _dbContext.Products?.Add(product);            
+            _dbContext.SaveChanges();        
+            var warehouse = _dbContext.Warehouses?.FirstOrDefault(x => x.Name == dto.Warehouse);
+            if (warehouse is null) throw new NotFoundException("Warehouse not found");           
+            var productInfo = new InfoProduct()
+            {
+                ProductId = product.Id,
+                WarehouseId = warehouse.Id,
+                Count = dto.Count
+            };
+            _dbContext.InfoProducts?.Add(productInfo);
+            _dbContext.SaveChanges();
+        }
+
         public void DeleteProduct(int id)
         {
             var product= _dbContext.Products?.FirstOrDefault(x => x.Id == id);

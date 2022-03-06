@@ -43,9 +43,28 @@ namespace WPF_SHOP.ViewAdmin
             Refresh();
         }
 
-        private void BT_Click_Add(object sender, RoutedEventArgs e)
+        private async void BT_Click_Add(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var product = new Product()
+                {
+                    Name = TB_Name.Text,
+                    Description = TB_Description.Text,
+                    Price = decimal.Parse(TB_Price.Text),
+                    IsAvailable = CB_Avaibility.IsChecked.Value,
+                    Warehouse = CB_Warehouse.Text,
+                    Count = int.Parse(TB_Count.Text)
+                };
+                await "https://localhost:7221/api/Product/info".PostJsonAsync(product);
+            }
+            catch (Exception)
+            {
 
+                MessageBox.Show("Invalid data or error connection");
+            }
+            Refresh();
+           
         }
         private async void Refresh()
         {

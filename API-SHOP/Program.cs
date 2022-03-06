@@ -21,7 +21,7 @@ builder.Services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(bui
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 
 //register services used database
-//builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 //regisster valid
 builder.Services.AddScoped<IValidator<RegisterUserDTO>, RegisterUserDTOValid>();

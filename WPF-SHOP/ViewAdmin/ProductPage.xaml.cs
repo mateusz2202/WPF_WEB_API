@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flurl.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_SHOP.Models;
 
 namespace WPF_SHOP.ViewAdmin
 {
@@ -23,6 +25,7 @@ namespace WPF_SHOP.ViewAdmin
         public ProductPage()
         {
             InitializeComponent();
+            Refresh();
         }
 
         private void BT_Click_Edit(object sender, RoutedEventArgs e)
@@ -37,12 +40,17 @@ namespace WPF_SHOP.ViewAdmin
 
         private void BT_Click_Refresh(object sender, RoutedEventArgs e)
         {
-
+            Refresh();
         }
 
         private void BT_Click_Add(object sender, RoutedEventArgs e)
         {
 
+        }
+        private async void Refresh()
+        {
+            var products=await "https://localhost:7221/api/Product".GetAsync().ReceiveJson<List<Product>>();
+            DG_Products.ItemsSource = products;
         }
     }
 }

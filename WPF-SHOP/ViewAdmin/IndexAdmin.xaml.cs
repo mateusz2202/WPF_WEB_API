@@ -30,7 +30,7 @@ namespace WPF_SHOP.ViewAdmin
         {
             MainWindow z = new MainWindow() { WindowStartupLocation = WindowStartupLocation.CenterOwner };
             z.Show();
-            this.Close();
+            Close();
         }
 
         private void BT_Click_Products(object sender, RoutedEventArgs e)

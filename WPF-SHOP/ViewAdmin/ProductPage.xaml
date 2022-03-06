@@ -80,10 +80,10 @@
                         Click="BT_Click_Add">Add</Button>
             </StackPanel>
             <StackPanel  Margin="10">               
-                <DataGrid x:Name="DG_dane"
+                <DataGrid x:Name="DG_Products"
                       IsReadOnly="True"
                       SelectionMode="Single"
-                      MaxHeight="400"
+                      Height="310"
                       ScrollViewer.VerticalScrollBarVisibility="Visible"
                       FontSize="12"
                       AutoGenerateColumns="False" CanUserAddRows="False">

@@ -1,4 +1,5 @@
 ﻿using API_SHOP.Entities;
+using API_SHOP.Models;
 
 namespace API_SHOP.IServices
 {
@@ -6,8 +7,8 @@ namespace API_SHOP.IServices
     {
         List<Product>GetAll();
         Product GetById(int id);
-        void CreateProduct(Product product);
-        void UpdateProduct(int id,Product product);
+        void CreateProduct(ProductDTO dto);
+        void UpdateProduct(int id, ProductDTO dto);
         void DeleteProduct(int id);
     }
 }

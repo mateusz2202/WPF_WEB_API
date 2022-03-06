@@ -6,5 +6,6 @@ namespace API_SHOP.IServices
     {
         void RegisterUser(RegisterUserDTO dto);
         string GetToken(LoginDTO dto);
+        UserDTO GetUserByEmail(string email);
     }
 }

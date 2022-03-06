@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flurl.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_SHOP.Models;
 using WPF_SHOP.ViewAdmin;
 
 namespace WPF_SHOP
@@ -26,8 +28,34 @@ namespace WPF_SHOP
             InitializeComponent();
         }
 
-        private void BT_Click_SigIn(object sender, RoutedEventArgs e)
+        private async void BT_Click_SigIn(object sender, RoutedEventArgs e)
         {
+            var user = new User()
+            {
+                Login = TB_Login.Text,
+                Password = PB_Password.Password
+            };
+            try
+            {
+                var loginResult = await "https://localhost:7221/api/account/login".AllowAnyHttpStatus().PostJsonAsync(user);
+                if (loginResult.StatusCode == 200)
+                {
+                    var token = await loginResult.ResponseMessage.Content.ReadAsStringAsync();
+                    
+                    MessageBox.Show(token);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid login or password");
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error connection");
+            }
+            
+            
             IndexAdmin z = new IndexAdmin
             {
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,

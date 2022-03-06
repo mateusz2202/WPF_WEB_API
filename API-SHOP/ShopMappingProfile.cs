@@ -10,6 +10,8 @@ namespace API_SHOP
         {
             CreateMap<ProductDTO, Product>();
             CreateMap<Product, ProductDTO>();
+            CreateMap<User, UserDTO>();
+          
   
         }
     }

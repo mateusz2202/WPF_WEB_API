@@ -3,6 +3,7 @@ using API_SHOP.Entities;
 using API_SHOP.Exceptions;
 using API_SHOP.IServices;
 using API_SHOP.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -16,13 +17,15 @@ namespace API_SHOP.Services
     {
         private readonly ShopDbContext _dbContext;
         private readonly IPasswordHasher<User> _passwordHasher;
+        private readonly IMapper _mapper;
         private readonly AuthenticationSettings _authenticationSettings;
 
-        public AccountService(ShopDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSettings)
+        public AccountService(ShopDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSettings, IMapper mapper)
         {
             _dbContext = dbContext;
             _passwordHasher = passwordHasher;
             _authenticationSettings = authenticationSettings;
+            _mapper = mapper;
         }
 
         public string GetToken(LoginDTO dto)
@@ -47,6 +50,14 @@ namespace API_SHOP.Services
                 expires: expires,
                 signingCredentials: cred);
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public UserDTO GetUserByEmail(string email)
+        {
+            var user = _dbContext.Users?.FirstOrDefault(x=>x.Login==email);
+            if (user is null) throw new NotFoundException("User not found");
+            var userDto=_mapper.Map<UserDTO>(user);
+            return userDto;
         }
 
         public void RegisterUser(RegisterUserDTO dto)

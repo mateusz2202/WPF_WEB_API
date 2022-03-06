@@ -26,5 +26,11 @@ namespace API_SHOP.Controllers
             var token=_accountService.GetToken(dto);
             return Ok(token);
         }
+        [HttpGet("user/{email}")]
+        public ActionResult GetUser([FromRoute] string email)
+        {
+            var user = _accountService.GetUserByEmail(email);
+            return Ok(user);
+        }
     }
 }

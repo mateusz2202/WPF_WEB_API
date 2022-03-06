@@ -32,5 +32,10 @@ namespace WPF_SHOP.ViewAdmin
             z.Show();
             this.Close();
         }
+
+        private void BT_Click_Products(object sender, RoutedEventArgs e)
+        {
+            AdminMain.Content = new ProductPage().Content;
+        }
     }
 }

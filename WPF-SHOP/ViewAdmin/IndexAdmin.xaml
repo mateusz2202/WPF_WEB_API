@@ -10,8 +10,9 @@
         <Border HorizontalAlignment="Stretch"
                 VerticalAlignment="Top"                 
                 BorderBrush="Aqua"
-                BorderThickness="2"
-                CornerRadius="30,0,0,30">
+                BorderThickness="2,2,2,0"
+                CornerRadius="30,0,0,0"
+                Margin="10,10,10,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -32,6 +33,50 @@
                     Click="BT_Click_LogOut"></Button>              
             </Grid>
           
+        </Border>
+        <Border HorizontalAlignment="Stretch"
+                VerticalAlignment="Top" 
+                Margin="10,80,10,0">
+            <Grid Height="700">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border  BorderBrush="Aqua"
+                BorderThickness="2,0,0,2"               
+                CornerRadius="0,30,0,0"
+                         Padding="10">
+                    <StackPanel Margin="0,20,0,0">
+                        <Button Content="Users"
+                            FontSize="20"
+                                Margin="0,0,0,10"></Button>                        
+                        <Button Content="Products"
+                            FontSize="20"
+                                Margin="0,0,0,10"
+                                Click="BT_Click_Products"></Button>
+                        <Button Content="Warehouses"
+                            FontSize="20"
+                                Margin="0,0,0,10"></Button>
+                    </StackPanel>
+                </Border>
+                <Border 
+                Grid.Column="1">
+                    <Border   BorderThickness="1,0,0,0"               
+                BorderBrush="Wheat"
+                              CornerRadius="30,0,0,0">
+                        <Border   BorderThickness="0,1,0,0"               
+                BorderBrush="Aqua"
+                                  CornerRadius="30,0,0,0"></Border>
+                    
+                    </Border>
+                    
+                </Border>
+                <Frame x:Name="AdminMain" 
+                       Grid.Column="1"
+                       Margin="20" 
+                       Background="LightGray"
+                       NavigationUIVisibility="Hidden"></Frame>
+            </Grid>
         </Border>
     </Grid>
 </Window>

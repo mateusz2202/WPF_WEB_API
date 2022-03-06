@@ -44,5 +44,11 @@ namespace API_SHOP.Controllers
             _productService.UpdateProduct(id, dto);
             return Ok();
         }
+        [HttpGet("info")]
+        public ActionResult<List<ProductInfoDTO>> GetAllPRoductInfo()
+        {
+            var result=_productService.GetAllProductInfo();
+            return Ok(result);
+        }
     }
 }

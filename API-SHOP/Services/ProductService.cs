@@ -4,6 +4,7 @@ using API_SHOP.Exceptions;
 using API_SHOP.IServices;
 using API_SHOP.Models;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace API_SHOP.Services
 {
@@ -38,6 +39,13 @@ namespace API_SHOP.Services
             var products = _dbContext.Products?.ToList();
             var productsDto=_mapper.Map<List<ProductDTO>>(products);
             return productsDto;
+        }
+
+        public List<ProductInfoDTO> GetAllProductInfo()
+        {
+            var productInfo = _dbContext.InfoProducts?.Include(x=>x.Product).Include(x=>x.Warehouse).ToList();
+            var productsInfoDto=_mapper.Map<List<ProductInfoDTO>>(productInfo);
+            return productsInfoDto;
         }
 
         public ProductDTO GetById(int id)

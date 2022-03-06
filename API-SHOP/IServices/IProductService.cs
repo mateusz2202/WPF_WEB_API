@@ -9,5 +9,7 @@ namespace API_SHOP.IServices
         void CreateProduct(ProductDTO dto);
         void UpdateProduct(int id, ProductDTO dto);
         void DeleteProduct(int id);
+        List<ProductInfoDTO> GetAllProductInfo();
+       
     }
 }

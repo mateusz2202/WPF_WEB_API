@@ -35,7 +35,7 @@ namespace WPF_SHOP.ViewAdmin
 
         private void BT_Click_Delete(object sender, RoutedEventArgs e)
         {
-
+            //to do 
         }
 
         private void BT_Click_Refresh(object sender, RoutedEventArgs e)

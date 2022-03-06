@@ -1,11 +1,14 @@
 using API_SHOP;
 using API_SHOP.Data;
+using API_SHOP.Entities;
 using API_SHOP.IServices;
 using API_SHOP.Middleware;
 using API_SHOP.Models;
 using API_SHOP.Models.Valid;
 using API_SHOP.Services;
 using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -14,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation();
 builder.Services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Shop_DB_Connection")));
 
 //register middleware
@@ -24,7 +27,8 @@ builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 
 //regisster valid
-builder.Services.AddScoped<IValidator<RegisterUserDTO>, RegisterUserDTOValid>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+builder.Services.AddScoped<IValidator<RegisterUserDTO>, RegisterUserDTOValidator>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -16,7 +16,6 @@ namespace API_SHOP.Entities
         public string? Login { get; set; }
         [DataType(DataType.Password)]
         [Required]
-        [MaxLength(32)]
         public string ?Password { get; set; }
         public int RoleId { get; set; }
         public Role? Role { get; set; }=null;

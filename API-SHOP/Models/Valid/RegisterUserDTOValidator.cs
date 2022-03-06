@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace API_SHOP.Models.Valid
 {
-    public class RegisterUserDTOValid : AbstractValidator<RegisterUserDTO>
+    public class RegisterUserDTOValidator : AbstractValidator<RegisterUserDTO>
     {
-        public RegisterUserDTOValid(ShopDbContext dbContext)
+        public RegisterUserDTOValidator(ShopDbContext dbContext)
         {
             RuleFor(x => x.Email)
                 .NotEmpty()

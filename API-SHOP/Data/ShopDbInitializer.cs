@@ -1,4 +1,5 @@
 ﻿using API_SHOP.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_SHOP.Data
@@ -9,7 +10,7 @@ namespace API_SHOP.Data
 
         public ShopDBInitializer(ModelBuilder modelBuilder)
         {
-            _modelBuilder = modelBuilder;
+            _modelBuilder = modelBuilder;           
         }
 
         public void Seed()
@@ -51,7 +52,7 @@ namespace API_SHOP.Data
                     LastName="Admin",
                     Login="Admin",
                     Password="1234",
-                    RoleId=1
+                    RoleId =1
                 },
                 new User()
                 {

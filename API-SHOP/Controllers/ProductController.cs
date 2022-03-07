@@ -56,5 +56,11 @@ namespace API_SHOP.Controllers
             _productService.CreateProductInfo(dto);
             return Ok();
         }
+        [HttpDelete("info/{id}")]
+        public ActionResult DeleteProductInfo([FromRoute]int id)
+        {
+            _productService.DeleteProductInfo(id);
+            return NoContent();
+        }
     }
 }

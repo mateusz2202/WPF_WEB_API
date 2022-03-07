@@ -11,6 +11,7 @@ namespace API_SHOP.IServices
         void DeleteProduct(int id);
         List<ProductInfoDTO> GetAllProductInfo();
         void CreateProductInfo(ProductInfoDTO dto);
+        void DeleteProductInfo(int id);
 
     }
 }

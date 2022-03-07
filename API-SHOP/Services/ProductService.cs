@@ -57,6 +57,14 @@ namespace API_SHOP.Services
             _dbContext.SaveChanges();
         }
 
+        public void DeleteProductInfo(int id)
+        {
+            var productInfo = _dbContext.InfoProducts?.FirstOrDefault(x => x.Id == id);
+            if(productInfo is null) throw new NotFoundException("Info about product not found");             
+            _dbContext.InfoProducts?.Remove(productInfo);
+            _dbContext.SaveChanges();           
+        }
+
         public List<ProductDTO> GetAll()
         {
             var products = _dbContext.Products?.ToList();

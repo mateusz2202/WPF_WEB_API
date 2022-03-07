@@ -18,7 +18,8 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1" >
-                <Label Foreground="White" 
+                <Label x:Name="L_NameAction"
+                    Foreground="White" 
                FontSize="20" 
                HorizontalAlignment="Center">Add</Label>
                 <Grid Margin="5">
@@ -61,9 +62,9 @@
                         <ComboBox x:Name="CB_Warehouse" 
                          FontSize="16" 
                          Width="300">
-                            <ComboBoxItem IsSelected="True">Rzeszów</ComboBoxItem>
-                            <ComboBoxItem>Kraków</ComboBoxItem>
-                            <ComboBoxItem>Gdańsk</ComboBoxItem>
+                            <ComboBoxItem IsSelected="True" Content="Rzeszów"></ComboBoxItem>
+                            <ComboBoxItem Content="Kraków"></ComboBoxItem>
+                            <ComboBoxItem Content="Gdańsk"></ComboBoxItem>
                         </ComboBox>
                         <Label Foreground="White"
                 FontSize="16">Availalbe:</Label>
@@ -75,7 +76,7 @@
 
                     </StackPanel>
                 </Grid>
-                <Button 
+                <Button x:Name="BT_NameAction"
                         Width="100" 
                         Margin="10" 
                         FontSize="16" 

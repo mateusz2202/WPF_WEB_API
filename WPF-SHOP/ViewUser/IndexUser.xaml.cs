@@ -24,6 +24,7 @@ namespace WPF_SHOP.ViewUser
         {
             InitializeComponent();
             _token = token;
+            UserMain.Content = new ProducsView().Content;
         }
 
         private void BT_Click_LogOut(object sender, RoutedEventArgs e)
@@ -31,6 +32,11 @@ namespace WPF_SHOP.ViewUser
             MainWindow z=new MainWindow() { WindowStartupLocation = WindowStartupLocation.CenterOwner };
             z.Show();
             this.Close();
+        }
+
+        private void BT_Click_ShoppingBasket(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿<Page x:Class="WPF_SHOP.ViewUser.ProducsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+      xmlns:local="clr-namespace:WPF_SHOP.ViewUser"
+      mc:Ignorable="d" 
+      d:DesignHeight="674" d:DesignWidth="880"
+      Title="Shop">
+
+    <Grid>
+
+        <DockPanel>
+            <wv2:WebView2 Name="webView"
+                  Source="https://www.microsoft.com"/>
+        </DockPanel>
+
+
+
+
+
+    </Grid>
+</Page>

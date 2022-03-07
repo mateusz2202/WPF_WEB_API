@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="3.2.2" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1108.44" />
   </ItemGroup>
 
 </Project>

@@ -10,6 +10,7 @@
         <Border HorizontalAlignment="Stretch"
                 VerticalAlignment="Top"                 
                 BorderBrush="Aqua"
+                Margin="0,8,0,0"
                 BorderThickness="2"
                 CornerRadius="30,0,0,30">
             <Grid>
@@ -25,14 +26,26 @@
                 </Label>
                 <Button 
                     Grid.Column="1"
+                    Content="Shopping cart"                      
+                    Width="200" 
+                    Height="50"
+                    FontSize="16"  
+                    HorizontalAlignment="Right"
+                    Margin="0,0,120,0"
+                    Click="BT_Click_ShoppingBasket"></Button>
+                <Button 
+                    Grid.Column="1"
                     Content="Log out"                      
                     Width="100" 
                     FontSize="16"  
                     HorizontalAlignment="Right"
                     Click="BT_Click_LogOut"></Button>
             </Grid>
-
         </Border>
-        
+        <Frame x:Name="UserMain" 
+                       Grid.Column="1"
+                       Margin="10,100,10,10"                       
+                       NavigationUIVisibility="Hidden"></Frame>
+
     </Grid>
 </Window>

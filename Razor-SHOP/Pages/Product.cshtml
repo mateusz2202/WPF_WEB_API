@@ -1,0 +1,33 @@
+﻿@page
+@model Razor_SHOP.Pages.ProductModel
+@using Razor_SHOP.Models
+@{
+ <table class="table">   
+ <tr>    
+        <th>    
+            @Html.DisplayNameFor(model => model.Products[0].Name)    
+        </th>    
+        <th>    
+             @Html.DisplayNameFor(model => model.Products[0].Price)     
+        </th>    
+        <th>    
+            @Html.DisplayNameFor(model => model.Products[0].Warehouse)   
+        </th>    
+        <th></th>    
+    </tr>  
+@foreach (var item in Model.Products) {    
+    <tr>    
+        <td>    
+            @Html.DisplayFor(modelItem => item.Name)    
+        </td>             
+        <td>    
+            @Html.DisplayFor(modelItem => item.Price)    
+        </td>         
+           <td>    
+            @Html.DisplayFor(modelItem => item.Warehouse)    
+        </td>    
+    </tr>    
+}    
+    
+</table>  
+}

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
+
 namespace Razor_SHOP.Pages
 {
     public class IndexModel : PageModel
@@ -14,7 +15,6 @@ namespace Razor_SHOP.Pages
 
         public void OnGet()
         {
-
         }
     }
 }

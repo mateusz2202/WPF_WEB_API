@@ -7,4 +7,8 @@
     <RootNamespace>Razor_SHOP</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Flurl.Http" Version="3.2.2" />
+  </ItemGroup>
+
 </Project>

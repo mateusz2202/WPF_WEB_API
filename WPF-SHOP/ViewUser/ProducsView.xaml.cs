@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Web.WebView2.Core;
+using Flurl.Http;
+using WPF_SHOP.Models;
 
 namespace WPF_SHOP.ViewUser
 {
@@ -23,6 +27,16 @@ namespace WPF_SHOP.ViewUser
         public ProducsView()
         {
             InitializeComponent();
+            InitWebView();
         }
+
+        private async void InitWebView()
+        {
+            await webView.EnsureCoreWebView2Async();
+           
+           
+        }       
+
+
     }
 }

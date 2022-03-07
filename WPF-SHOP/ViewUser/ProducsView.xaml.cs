@@ -33,8 +33,9 @@ namespace WPF_SHOP.ViewUser
         private async void InitWebView()
         {
             await webView.EnsureCoreWebView2Async();
-           
-           
+           webView.CoreWebView2.Navigate("https://localhost:7153/");
+
+
         }       
 
 

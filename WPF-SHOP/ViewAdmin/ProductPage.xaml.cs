@@ -36,7 +36,7 @@ namespace WPF_SHOP.ViewAdmin
         private async void BT_Click_Delete(object sender, RoutedEventArgs e)
         {
             var productInfo = DG_Products.SelectedItem as Product;
-            var result = await $"https://localhost:7221/api/Product/info/{productInfo.Id}".DeleteAsync();
+            var result = await $"https://localhost:7221/api/Product/info/{productInfo?.Id}".DeleteAsync();
             if (result.StatusCode!=204) MessageBox.Show("Error delete");
             Refresh();
         }

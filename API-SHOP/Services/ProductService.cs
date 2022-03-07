@@ -87,6 +87,17 @@ namespace API_SHOP.Services
             return result;
         }
 
+        public void UpadateProductInfo(int id, ProductInfoUpdateDTO dto)
+        {
+           var productInfo=_dbContext.InfoProducts?.Include(x=>x.Product).Include(x=>x.Warehouse).FirstOrDefault(x=>x.Id == id);
+            if (productInfo is null) throw new NotFoundException("Info about product not found");
+            var warehouse = _dbContext.Warehouses?.FirstOrDefault(x => x.Name == dto.Warehouse);
+            if (warehouse is null) throw new NotFoundException("Warehouse not exist");    
+            productInfo.WarehouseId=warehouse.Id;
+            productInfo.Count = dto.Count;
+            _dbContext.SaveChanges();
+        }
+
         public void UpdateProduct(int id, ProductDTO dto)
         {
             var product = _dbContext.Products?.FirstOrDefault(x => x.Id == id);
